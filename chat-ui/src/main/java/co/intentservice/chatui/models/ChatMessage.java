@@ -75,11 +75,3 @@ public class ChatMessage {
         SENT, RECEIVED
     }
 }
-
-class SortByTimestamp implements Comparator<ChatMessage> {
-
-    @Override
-    public int compare(ChatMessage o1, ChatMessage o2) {
-        return (int) (o1.getTimestamp() - o2.getTimestamp());
-    }
-}
