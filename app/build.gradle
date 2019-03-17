@@ -1,13 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 27
 
     defaultConfig {
         applicationId "co.intentservice.chatui.sample"
         minSdkVersion 16
-        targetSdkVersion 23
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
     }
@@ -19,10 +18,15 @@ android {
     }
 }
 
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
+repositories {
+    google()
+    jcenter()
+}
 
-    compile 'com.android.support:appcompat-v7:23.4.0'
-    compile project(':chat-ui')
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation project(':chat-ui')
 }
