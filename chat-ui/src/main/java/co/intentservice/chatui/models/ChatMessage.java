@@ -73,7 +73,7 @@ public class ChatMessage implements Serializable {
         this.sender = sender;
     }
 
-    public enum Type {
+    public enum Type implements Serializable {
         SENT, RECEIVED
     }
 }
