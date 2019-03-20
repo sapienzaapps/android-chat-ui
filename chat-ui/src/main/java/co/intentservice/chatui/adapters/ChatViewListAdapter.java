@@ -124,4 +124,8 @@ public class ChatViewListAdapter extends BaseAdapter {
         this.chatMessages.clear();
         notifyDataSetChanged();
     }
+
+    public ChatMessage getLastMessage() {
+        return chatMessages.get(chatMessages.size()-1);
+    }
 }

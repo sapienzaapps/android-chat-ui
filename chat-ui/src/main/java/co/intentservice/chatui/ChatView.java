@@ -386,6 +386,10 @@ public class ChatView extends RelativeLayout {
         chatViewListAdapter.addMessages(messages);
     }
 
+    public ChatMessage getLastMessage() {
+        return chatViewListAdapter.getLastMessage();
+    }
+
     public void removeMessage(int position) {
         chatViewListAdapter.removeMessage(position);
     }
