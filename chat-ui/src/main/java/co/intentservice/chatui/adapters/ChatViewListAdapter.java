@@ -125,7 +125,23 @@ public class ChatViewListAdapter extends BaseAdapter {
         notifyDataSetChanged();
     }
 
-    public ChatMessage getLastMessage() {
-        return chatMessages.size() == 0 ? null : chatMessages.get(chatMessages.size()-1);
+    public ArrayList<ChatMessage> getLastMessageWithSender() {
+        if (chatMessages.size() != 0) {
+            int i = chatMessages.size()-1;
+            while (i >= 0) {
+                ChatMessage message = chatMessages.get(i);
+                if (message.getSender() != null) {
+                    ArrayList<ChatMessage> retArray = new ArrayList<>();
+                    retArray.add(message);
+                    retArray.add(chatMessages.get(chatMessages.size()-1));
+                    return retArray;
+                } else {
+                    i--;
+                }
+            }
+        } else {
+            return null;
+        }
+        return null;
     }
 }
