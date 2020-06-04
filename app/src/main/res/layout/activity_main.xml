@@ -14,10 +14,12 @@
             android:id="@+id/chat_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            chatview:backgroundColor="@color/off_white"
+            chatview:backgroundColor="@color/whatsapp_green"
             chatview:bubbleElevation="elevated"
             chatview:bubbleBackgroundRcv="@color/blue"
             chatview:bubbleBackgroundSend="@color/white"
+            chatview:backgroundRcv="@android:color/transparent"
+            chatview:backgroundSend="@android:color/transparent"
             chatview:inputHint="@string/start_typing"/>
 
 </LinearLayout>

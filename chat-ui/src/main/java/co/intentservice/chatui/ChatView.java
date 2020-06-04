@@ -18,6 +18,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -57,6 +59,7 @@ public class ChatView extends RelativeLayout {
         }
     };
     private OnSentMessageListener onSentMessageListener;
+    private OnLocationSendListener onLocationSendListener;
     private ChatViewListAdapter chatViewListAdapter;
 
     private String inputHint;
@@ -309,6 +312,16 @@ public class ChatView extends RelativeLayout {
                 return true;
             }
         });
+
+        ImageView locationButton = findViewById(R.id.location_button);
+        locationButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onLocationSendListener != null) {
+                    onLocationSendListener.sendLocation();
+                }
+            }
+        });
     }
 
     private void setUserTypingListener() {
@@ -369,6 +382,10 @@ public class ChatView extends RelativeLayout {
         this.onSentMessageListener = onSentMessageListener;
     }
 
+    public void setOnLocationSendListener(OnLocationSendListener onLocationSendListener) {
+        this.onLocationSendListener = onLocationSendListener;
+    }
+
     private void sendMessage(String message, long stamp) {
 
         ChatMessage chatMessage = new ChatMessage(message, stamp, Type.SENT);
@@ -403,7 +420,6 @@ public class ChatView extends RelativeLayout {
         return actionsMenu;
     }
 
-
     public interface TypingListener {
 
         void userStartedTyping();
@@ -414,6 +430,10 @@ public class ChatView extends RelativeLayout {
 
     public interface OnSentMessageListener {
         boolean sendMessage(ChatMessage chatMessage);
+    }
+
+    public interface OnLocationSendListener {
+        void sendLocation();
     }
 
 }

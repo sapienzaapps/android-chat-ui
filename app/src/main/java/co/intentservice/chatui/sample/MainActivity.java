@@ -2,6 +2,7 @@ package co.intentservice.chatui.sample;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import co.intentservice.chatui.ChatView;
 import co.intentservice.chatui.models.ChatMessage;
@@ -33,6 +34,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void userStoppedTyping() {
 
+            }
+        });
+
+        chatView.setOnLocationSendListener(new ChatView.OnLocationSendListener() {
+            @Override
+            public void sendLocation() {
+                Log.e("MainActivity","sendLocation() called");
             }
         });
     }
