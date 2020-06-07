@@ -321,7 +321,12 @@ public class ChatView extends RelativeLayout {
             @Override
             public void onClick(View v) {
                 if (onLocationSendListener != null) {
-                    onLocationSendListener.sendLocation();
+                    onLocationSendListener.sendLocation(new OnLocationAcquiredListener() {
+                        @Override
+                        public void doSend(Uri uri) {
+                            sendPositionMessage(System.currentTimeMillis(), uri);
+                        }
+                    });
                 }
             }
         });
@@ -398,7 +403,6 @@ public class ChatView extends RelativeLayout {
         }
     }
 
-    /*
     private void sendPositionMessage(long stamp, Uri mapsUri) {
 
         PositionMessage positionMessage = new PositionMessage(stamp, Type.POSITION_SENT, mapsUri);
@@ -407,7 +411,6 @@ public class ChatView extends RelativeLayout {
             inputEditText.setText("");
         }
     }
-    */
 
     public void addMessage(ChatMessage chatMessage) {
         chatViewListAdapter.addMessage(chatMessage);
@@ -447,7 +450,11 @@ public class ChatView extends RelativeLayout {
     }
 
     public interface OnLocationSendListener {
-        void sendLocation();
+        void sendLocation(OnLocationAcquiredListener callbackForSend);
+    }
+
+    public interface OnLocationAcquiredListener {
+        void doSend(Uri uri);
     }
 
 }
