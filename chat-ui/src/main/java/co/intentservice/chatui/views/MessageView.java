@@ -67,7 +67,7 @@ public abstract class MessageView extends FrameLayout {
      *
      * @param context
      */
-    public MessageView(Context context) {
+    public MessageView(Context context, MessageType type) {
 
         super(context);
 
@@ -80,10 +80,14 @@ public abstract class MessageView extends FrameLayout {
      * @param context
      * @param attrs
      */
-    public MessageView(Context context, AttributeSet attrs) {
+    public MessageView(Context context, AttributeSet attrs, MessageType type) {
 
         super(context, attrs);
 
+    }
+
+    public enum MessageType {
+        TEXT_MESSAGE, POSITION_MESSAGE
     }
 
 }

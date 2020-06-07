@@ -1,11 +1,13 @@
 package co.intentservice.chatui.sample;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import co.intentservice.chatui.ChatView;
 import co.intentservice.chatui.models.ChatMessage;
+import co.intentservice.chatui.models.PositionMessage;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,6 +20,13 @@ public class MainActivity extends AppCompatActivity {
         chatView.addMessage(new ChatMessage("Message received", System.currentTimeMillis(), ChatMessage.Type.RECEIVED));
         chatView.addMessage(new ChatMessage("A message with a sender name",
                 System.currentTimeMillis(), ChatMessage.Type.RECEIVED, "Ryan Java"));
+        double lat = 42.0912146;
+        double lon = 12.5280263;
+        chatView.addMessage(new PositionMessage(System.currentTimeMillis(),ChatMessage.Type.POSITION_SENT, Uri.parse("geo:0,0?q="+lat+","+lon+"(User+Name)")));
+        lat = 42.0913146;
+        lon = 12.9282263;
+        chatView.addMessage(new PositionMessage(System.currentTimeMillis(),ChatMessage.Type.POSITION_RECEIVED, Uri.parse("geo:0,0?q="+lat+","+lon+"(User+Name)")));
+        //chatView.addMessage(new ChatMessage("Message sent", System.currentTimeMillis(), ChatMessage.Type.SENT));
         chatView.setOnSentMessageListener(new ChatView.OnSentMessageListener() {
             @Override
             public boolean sendMessage(ChatMessage chatMessage) {

@@ -43,7 +43,6 @@
         android:clickable="true"
         android:focusable="true"
         android:foreground="?android:attr/selectableItemBackground"
-        android:onClick="sendPositionButton"
         android:layout_alignParentRight="true" />
 
 

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.text.Editable;
@@ -14,6 +15,7 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
@@ -30,6 +32,7 @@ import co.intentservice.chatui.fab.FloatingActionsMenu;
 import co.intentservice.chatui.models.ChatMessage;
 import co.intentservice.chatui.models.ChatMessage.Type;
 import co.intentservice.chatui.adapters.ChatViewListAdapter;
+import co.intentservice.chatui.models.PositionMessage;
 import co.intentservice.chatui.views.ViewBuilder;
 import co.intentservice.chatui.views.ViewBuilderInterface;
 
@@ -394,6 +397,17 @@ public class ChatView extends RelativeLayout {
             inputEditText.setText("");
         }
     }
+
+    /*
+    private void sendPositionMessage(long stamp, Uri mapsUri) {
+
+        PositionMessage positionMessage = new PositionMessage(stamp, Type.POSITION_SENT, mapsUri);
+        if (onSentMessageListener != null && onSentMessageListener.sendMessage(positionMessage)) {
+            chatViewListAdapter.addMessage(positionMessage);
+            inputEditText.setText("");
+        }
+    }
+    */
 
     public void addMessage(ChatMessage chatMessage) {
         chatViewListAdapter.addMessage(chatMessage);

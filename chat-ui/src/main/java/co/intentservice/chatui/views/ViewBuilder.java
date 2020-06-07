@@ -17,9 +17,9 @@ public class ViewBuilder implements ViewBuilderInterface {
      * @param context A context that is used to instantiate the view.
      * @return        MessageView object for displaying received messages.
      */
-    public MessageView buildRecvView(Context context) {
+    public MessageView buildRecvView(Context context, MessageView.MessageType type) {
 
-        MessageView view = new ItemRecvView(context);
+        MessageView view = new ItemRecvView(context, type);
         return view;
 
     }
@@ -30,9 +30,9 @@ public class ViewBuilder implements ViewBuilderInterface {
      * @param context A context that is used to instantiate the view.
      * @return        MessageView object for displaying sent messages.
      */
-    public MessageView buildSentView(Context context) {
+    public MessageView buildSentView(Context context, MessageView.MessageType type) {
 
-        MessageView view = new ItemSentView(context);
+        MessageView view = new ItemSentView(context, type);
         return view;
 
     }

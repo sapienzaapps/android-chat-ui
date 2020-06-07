@@ -1,6 +1,8 @@
 package co.intentservice.chatui.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,8 +10,11 @@ import android.widget.BaseAdapter;
 
 import java.util.ArrayList;
 
+import co.intentservice.chatui.R;
 import co.intentservice.chatui.models.ChatMessage;
+import co.intentservice.chatui.models.PositionMessage;
 import co.intentservice.chatui.viewholders.MessageViewHolder;
+import co.intentservice.chatui.views.MessageView;
 import co.intentservice.chatui.views.ViewBuilder;
 import co.intentservice.chatui.views.ViewBuilderInterface;
 
@@ -22,8 +27,10 @@ import co.intentservice.chatui.views.ViewBuilderInterface;
 
 public class ChatViewListAdapter extends BaseAdapter {
 
-    public final int STATUS_SENT = 0;
-    public final int STATUS_RECEIVED = 1;
+    public final int TEXT_SENT = 0;
+    public final int TEXT_RECEIVED = 1;
+    public final int POSITION_SENT = 2;
+    public final int POSITION_RECEIVED = 3;
 
     private int backgroundRcv, backgroundSend;
     private int bubbleBackgroundRcv, bubbleBackgroundSend;
@@ -69,20 +76,46 @@ public class ChatViewListAdapter extends BaseAdapter {
 
     @Override
     public int getViewTypeCount() {
-        return 2;
+        return 4;
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         MessageViewHolder holder;
         int type = getItemViewType(position);
         if (convertView == null) {
             switch (type) {
-                case STATUS_SENT:
-                    convertView = viewBuilder.buildSentView(context);
+                case TEXT_SENT:
+                    convertView = viewBuilder.buildSentView(context, MessageView.MessageType.TEXT_MESSAGE);
                     break;
-                case STATUS_RECEIVED:
-                    convertView = viewBuilder.buildRecvView(context);
+                case TEXT_RECEIVED:
+                    convertView = viewBuilder.buildRecvView(context, MessageView.MessageType.TEXT_MESSAGE);
+                    break;
+                case POSITION_SENT:
+                    convertView = viewBuilder.buildSentView(context, MessageView.MessageType.POSITION_MESSAGE);
+                    convertView.findViewById(R.id.location_layout_clickable).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            PositionMessage positionMessage = (PositionMessage) getItem(position);
+                            Uri mapsUri = positionMessage.getMapsUri();
+                            Intent mapIntent = new Intent(Intent.ACTION_VIEW, mapsUri);
+                            mapIntent.setPackage("com.google.android.apps.maps");
+                            context.startActivity(mapIntent);
+                        }
+                    });
+                    break;
+                case POSITION_RECEIVED:
+                    convertView = viewBuilder.buildRecvView(context, MessageView.MessageType.POSITION_MESSAGE);
+                    convertView.findViewById(R.id.location_layout_clickable).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            PositionMessage positionMessage = (PositionMessage) getItem(position);
+                            Uri mapsUri = positionMessage.getMapsUri();
+                            Intent mapIntent = new Intent(Intent.ACTION_VIEW, mapsUri);
+                            mapIntent.setPackage("com.google.android.apps.maps");
+                            context.startActivity(mapIntent);
+                        }
+                    });
                     break;
             }
 

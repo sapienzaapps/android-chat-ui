@@ -34,8 +34,9 @@ public class ItemSentView extends MessageView {
             messageTextView = (TextView) findViewById(R.id.message_text_view);
 
         }
-
-        messageTextView.setText(message);
+        if (messageTextView != null) {
+            messageTextView.setText(message);
+        }
 
 
     }
@@ -92,10 +93,10 @@ public class ItemSentView extends MessageView {
      * Constructs a new message view.
      * @param context
      */
-    public ItemSentView(Context context) {
+    public ItemSentView(Context context, MessageType type) {
 
-        super(context);
-        initializeView(context);
+        super(context, type);
+        initializeView(context, type);
 
     }
 
@@ -105,10 +106,10 @@ public class ItemSentView extends MessageView {
      * @param context
      * @param attrs
      */
-    public ItemSentView(Context context, AttributeSet attrs) {
+    public ItemSentView(Context context, AttributeSet attrs, MessageType type) {
 
-        super(context, attrs);
-        initializeView(context);
+        super(context, attrs, type);
+        initializeView(context, type);
 
     }
 
@@ -117,14 +118,18 @@ public class ItemSentView extends MessageView {
      * later on.
      * @param context   The context that is used to inflate the view.
      */
-    private void initializeView(Context context) {
+    private void initializeView(Context context, MessageType type) {
 
         LayoutInflater inflater = (LayoutInflater)
                 context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.chat_item_sent, this);
+        if (type.equals(MessageType.TEXT_MESSAGE)) {
+            inflater.inflate(R.layout.chat_item_sent, this);
+            this.messageTextView = (TextView) findViewById(R.id.message_text_view);
+        } else {
+            inflater.inflate(R.layout.chat_item_position_sent, this);
+        }
 
         this.bubble = (CardView) findViewById(R.id.bubble);
-        this.messageTextView = (TextView) findViewById(R.id.message_text_view);
         this.timestampTextView = (TextView) findViewById(R.id.timestamp_text_view);
 
     }

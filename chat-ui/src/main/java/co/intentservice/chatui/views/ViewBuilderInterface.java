@@ -16,7 +16,7 @@ public interface ViewBuilderInterface {
      * @param context A context that is used to instantiate the view.
      * @return        MessageView object for displaying received messages.
      */
-    MessageView buildRecvView(Context context);
+    MessageView buildRecvView(Context context, MessageView.MessageType type);
 
     /**
      * Returns a MessageView object which is used to display messages that the chat-ui
@@ -24,6 +24,6 @@ public interface ViewBuilderInterface {
      * @param context A context that is used to instantiate the view.
      * @return        MessageView object for displaying sent messages.
      */
-    MessageView buildSentView(Context context);
+    MessageView buildSentView(Context context, MessageView.MessageType type);
 
 }

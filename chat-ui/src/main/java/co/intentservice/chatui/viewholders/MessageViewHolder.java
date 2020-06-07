@@ -19,6 +19,8 @@ public class MessageViewHolder {
 
     public final int STATUS_SENT = 0;
     public final int STATUS_RECEIVED = 1;
+    public final int POSITION_SENT = 2;
+    public final int POSITION_RECEIVED = 3;
 
     View row;
     Context context;
@@ -66,10 +68,12 @@ public class MessageViewHolder {
 
         switch (messageType) {
             case STATUS_RECEIVED:
+            case POSITION_RECEIVED:
                 chatMessageBackground = backgroundRcv;
                 bubbleBackground = bubbleBackgroundRcv;
                 break;
             case STATUS_SENT:
+            case POSITION_SENT:
                 chatMessageBackground = backgroundSend;
                 bubbleBackground = bubbleBackgroundSend;
                 break;
