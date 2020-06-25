@@ -137,6 +137,8 @@ public class ChatViewListAdapter extends BaseAdapter {
         boolean isSent = chatMessages.get(position).isSent();
         if (isSent) {
             holder.setMessageAsSent();
+        } else {
+            holder.setDefaultMessageStatus();
         }
 
         return convertView;

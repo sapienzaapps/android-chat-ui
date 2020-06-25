@@ -41,8 +41,11 @@ public class MessageViewHolder {
     }
 
     public void setMessageAsSent() {
-        ImageView messageStatus = messageView.findViewById(R.id.message_status_image);
-        messageStatus.setImageResource(R.drawable.ic_done_24);
+        messageView.setMessageAsSent();
+    }
+
+    public void setDefaultMessageStatus() {
+        messageView.setDefaultMessageStatus();
     }
 
     public void setMessage(String message) {

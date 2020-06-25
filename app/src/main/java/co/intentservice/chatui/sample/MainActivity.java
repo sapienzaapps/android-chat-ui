@@ -63,11 +63,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        final PositionMessage test2 = new PositionMessage(System.currentTimeMillis(),ChatMessage.Type.POSITION_SENT, Uri.parse("geo:0,0?q="+"13"+","+"15"+"(User+Name)"));
+
         Handler h = new Handler();
         h.postDelayed(new Runnable() {
             @Override
             public void run() {
                 test.setMessageSent(chatView);
+                chatView.addMessage(test2);
+            }
+        },2000);
+
+        Handler h1 = new Handler();
+        h1.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                test2.setMessageSent(chatView);
             }
         },4000);
     }

@@ -87,6 +87,16 @@ public class ItemRecvView extends MessageView {
 
     }
 
+    @Override
+    public void setMessageAsSent() {
+
+    }
+
+    @Override
+    public void setDefaultMessageStatus() {
+
+    }
+
     /**
      * Constructs a new message view.
      * @param context

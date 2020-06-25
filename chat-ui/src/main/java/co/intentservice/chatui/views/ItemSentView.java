@@ -8,6 +8,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import co.intentservice.chatui.R;
@@ -21,6 +22,7 @@ public class ItemSentView extends MessageView {
 
     private CardView bubble;
     private TextView messageTextView, timestampTextView;
+    private ImageView messageStatus;
 
 
     /**
@@ -87,6 +89,28 @@ public class ItemSentView extends MessageView {
 
         bubble.setCardElevation(elevation);
 
+    }
+
+    @Override
+    public void setMessageAsSent() {
+
+        if (messageStatus == null) {
+
+            messageStatus = (ImageView) findViewById(R.id.message_status_image);
+
+        }
+
+        messageStatus.setImageResource(R.drawable.ic_done_24);
+    }
+
+    @Override
+    public void setDefaultMessageStatus() {
+
+        if (messageStatus == null) {
+            messageStatus = (ImageView) findViewById(R.id.message_status_image);
+        }
+
+        messageStatus.setImageResource(R.drawable.ic_clock_24);
     }
 
     /**
