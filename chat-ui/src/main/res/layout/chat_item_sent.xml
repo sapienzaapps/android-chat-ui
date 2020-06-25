@@ -46,7 +46,7 @@
                 android:id="@+id/message_text_view"
                 tools:text="My name is Timi and I am not a god. Inner places is not the atomic career of the doer."
                 android:textSize="@dimen/default_message_text_size"
-                android:textColor="@color/default_message_color_send"
+                android:textColor="@color/white"
                 android:gravity="center_vertical|start"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -68,7 +68,7 @@
                     android:layout_gravity="end"
                     android:gravity="center_vertical|end"
                     android:layout_marginEnd="4dp"
-                    android:textColor="@color/default_tstamp_color_send"
+                    android:textColor="@color/off_white"
                     android:textSize="@dimen/default_timestamp_text_size"
                     tools:text="12:10 am" />
 

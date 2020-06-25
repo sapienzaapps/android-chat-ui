@@ -5,7 +5,7 @@
     <color name="black">#000000</color>
     <color name="sinch_purple">#63029d</color>
     <color name="sinch_purple_darker">#ff380258</color>
-    <color name="off_white">#fffafafa</color>
+    <color name="off_white">#FFD9DADC</color>
     <color name="dark_gray">#ffb3b3b3</color>
     <color name="very_dark_gray">#636363</color>
     <color name="u_blue_light">#4A90E2</color>
@@ -24,8 +24,11 @@
     <color name="default_bubble_color_send">@color/white</color>
 
     <color name="default_tstamp_color_rcv">@color/off_white</color>
-    <color name="default_tstamp_color_send">@color/main_color_gray</color>
+    <color name="default_tstamp_color_send">@color/off_white</color>
 
     <color name="default_message_color_rcv">@color/white</color>
-    <color name="default_message_color_send">@color/black</color>
+    <color name="default_message_color_send">@color/off_white</color>
+
+    <color name="colorPrimaryNightMode">#FF222D36</color>
+    <color name="colorSecondaryNightMode">#FF101D24</color>
 </resources>

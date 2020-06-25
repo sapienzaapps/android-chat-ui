@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:gravity="center_vertical|end"
-                android:textColor="@color/default_tstamp_color_rcv"
+                android:textColor="@color/off_white"
                 android:textSize="@dimen/default_timestamp_text_size"
                 tools:text="12:10 am" />
 
