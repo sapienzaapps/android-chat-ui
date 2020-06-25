@@ -69,14 +69,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="4dp" />
 
-            <TextView
-                android:id="@+id/timestamp_text_view"
-                tools:text="12:10 am"
-                android:textSize="@dimen/default_timestamp_text_size"
-                android:textColor="@color/default_tstamp_color_send"
-                android:gravity="center_vertical|start"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="bottom|end">
+
+                <TextView
+                    android:id="@+id/timestamp_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:gravity="center_vertical|end"
+                    android:layout_marginEnd="4dp"
+                    android:textColor="@color/default_tstamp_color_send"
+                    android:textSize="@dimen/default_timestamp_text_size"
+                    tools:text="12:10 am" />
+
+                <ImageView
+                    android:id="@+id/message_status_image"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@drawable/ic_clock_24"
+                    android:layout_gravity="center_vertical|end" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

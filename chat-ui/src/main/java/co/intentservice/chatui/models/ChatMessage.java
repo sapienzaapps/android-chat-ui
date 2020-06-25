@@ -1,10 +1,15 @@
 package co.intentservice.chatui.models;
 
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.content.LocalBroadcastManager;
 import android.text.format.DateFormat;
 
 import java.io.Serializable;
 import java.util.Comparator;
 import java.util.concurrent.TimeUnit;
+
+import co.intentservice.chatui.ChatView;
 
 
 /**
@@ -17,6 +22,7 @@ public class ChatMessage implements Serializable {
     private long timestamp;
     private Type type;
     private String sender;
+    private boolean sent = false;
 
     public ChatMessage(String message, long timestamp, Type type) {
         this.message = message;
@@ -69,8 +75,17 @@ public class ChatMessage implements Serializable {
         return sender;
     }
 
+    public void setMessageSent(ChatView chatView) {
+        sent = true;
+        chatView.updateAllMessages();
+    }
+
     public void setSender(String sender) {
         this.sender = sender;
+    }
+
+    public boolean isSent() {
+        return sent;
     }
 
     public enum Type implements Serializable {

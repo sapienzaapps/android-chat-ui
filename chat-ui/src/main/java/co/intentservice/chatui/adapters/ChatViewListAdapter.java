@@ -134,6 +134,11 @@ public class ChatViewListAdapter extends BaseAdapter {
             holder.setSender(sender);
         }
 
+        boolean isSent = chatMessages.get(position).isSent();
+        if (isSent) {
+            holder.setMessageAsSent();
+        }
+
         return convertView;
     }
 
@@ -155,6 +160,10 @@ public class ChatViewListAdapter extends BaseAdapter {
 
     public void clearMessages() {
         this.chatMessages.clear();
+        notifyDataSetChanged();
+    }
+
+    public void updateAllMessages() {
         notifyDataSetChanged();
     }
 }

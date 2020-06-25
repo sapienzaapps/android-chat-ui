@@ -3,6 +3,7 @@ package co.intentservice.chatui.viewholders;
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
+import android.widget.ImageView;
 
 import co.intentservice.chatui.R;
 import co.intentservice.chatui.views.MessageView;
@@ -37,6 +38,11 @@ public class MessageViewHolder {
         this.backgroundSend = backgroundSend;
         this.bubbleBackgroundSend = bubbleBackgroundSend;
         this.bubbleBackgroundRcv = bubbleBackgroundRcv;
+    }
+
+    public void setMessageAsSent() {
+        ImageView messageStatus = messageView.findViewById(R.id.message_status_image);
+        messageStatus.setImageResource(R.drawable.ic_done_24);
     }
 
     public void setMessage(String message) {

@@ -1,6 +1,8 @@
 package co.intentservice.chatui;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -26,6 +28,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import co.intentservice.chatui.fab.FloatingActionsMenu;
@@ -63,6 +66,7 @@ public class ChatView extends RelativeLayout {
     };
     private OnSentMessageListener onSentMessageListener;
     private OnLocationSendListener onLocationSendListener;
+    private OnLocationMessageAddedInChatListener onLocationMessageAddedInChatListener;
     private ChatViewListAdapter chatViewListAdapter;
 
     private String inputHint;
@@ -324,7 +328,7 @@ public class ChatView extends RelativeLayout {
                     onLocationSendListener.sendLocation(new OnLocationAcquiredListener() {
                         @Override
                         public void doSend(Uri uri) {
-                            sendPositionMessage(System.currentTimeMillis(), uri);
+                            sendPositionMessage(onLocationMessageAddedInChatListener, System.currentTimeMillis(), uri);
                         }
                     });
                 }
@@ -394,6 +398,10 @@ public class ChatView extends RelativeLayout {
         this.onLocationSendListener = onLocationSendListener;
     }
 
+    public void setOnLocationMessageAddedInChatListener(OnLocationMessageAddedInChatListener onLocationMessageAddedInChatListener) {
+        this.onLocationMessageAddedInChatListener = onLocationMessageAddedInChatListener;
+    }
+
     private void sendMessage(String message, long stamp) {
 
         ChatMessage chatMessage = new ChatMessage(message, stamp, Type.SENT);
@@ -403,12 +411,13 @@ public class ChatView extends RelativeLayout {
         }
     }
 
-    private void sendPositionMessage(long stamp, Uri mapsUri) {
+    private void sendPositionMessage(OnLocationMessageAddedInChatListener callback, long stamp, Uri mapsUri) {
 
         PositionMessage positionMessage = new PositionMessage(stamp, Type.POSITION_SENT, mapsUri);
         if (onSentMessageListener != null && onSentMessageListener.sendMessage(positionMessage)) {
             chatViewListAdapter.addMessage(positionMessage);
             inputEditText.setText("");
+            callback.positionMessgeAddedInChat(positionMessage);
         }
     }
 
@@ -437,6 +446,10 @@ public class ChatView extends RelativeLayout {
         return actionsMenu;
     }
 
+    public void updateAllMessages() {
+        chatViewListAdapter.updateAllMessages();
+    }
+
     public interface TypingListener {
 
         void userStartedTyping();
@@ -455,6 +468,10 @@ public class ChatView extends RelativeLayout {
 
     public interface OnLocationAcquiredListener {
         void doSend(Uri uri);
+    }
+
+    public interface OnLocationMessageAddedInChatListener {
+        void positionMessgeAddedInChat(PositionMessage positionMessage);
     }
 
 }
