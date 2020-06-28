@@ -6,7 +6,9 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.text.format.DateFormat;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import co.intentservice.chatui.ChatView;
@@ -62,13 +64,24 @@ public class ChatMessage implements Serializable {
 
     public String getFormattedTime() {
 
-        long oneDayInMillis = TimeUnit.DAYS.toMillis(1); // 24 * 60 * 60 * 1000;
+        Date timestampDate = new Date(timestamp);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(timestampDate);
+        int dayTimestamp = calendar.get(Calendar.DAY_OF_MONTH);
+        int monthTimestamp = calendar.get(Calendar.MONTH);
+        int year = calendar.get(Calendar.YEAR);
 
-        long timeDifference = System.currentTimeMillis() - timestamp;
+        Date currentDate = new Date(System.currentTimeMillis());
+        calendar.setTime(currentDate);
+        int dayCurrent = calendar.get(Calendar.DAY_OF_MONTH);
+        int monthCurrent = calendar.get(Calendar.MONTH);
+        int yearCurrent = calendar.get(Calendar.YEAR);
 
-        return timeDifference < oneDayInMillis
-                ? DateFormat.format("HH:mm", timestamp).toString()
-                : DateFormat.format("dd MM - HH:mm", timestamp).toString();
+        if (dayTimestamp == dayCurrent && monthTimestamp == monthCurrent && year == yearCurrent) {
+            return DateFormat.format("HH:mm", timestamp).toString();
+        } else {
+            return DateFormat.format("dd/MM - HH:mm", timestamp).toString();
+        }
     }
 
     public String getSender() {
