@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 29
 
     defaultConfig {
         applicationId "co.intentservice.chatui.sample"
         minSdkVersion 21
-        targetSdkVersion 27
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
     }
