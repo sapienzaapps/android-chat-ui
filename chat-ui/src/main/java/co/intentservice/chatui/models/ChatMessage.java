@@ -1,15 +1,10 @@
 package co.intentservice.chatui.models;
 
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.content.LocalBroadcastManager;
 import android.text.format.DateFormat;
 
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.Comparator;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 import co.intentservice.chatui.ChatView;
 
