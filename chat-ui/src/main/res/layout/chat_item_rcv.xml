@@ -49,7 +49,7 @@
                 android:textSize="@dimen/default_message_text_size"
                 tools:text="My name is Timi and I am..." />
 
-            <androidx.legacy.widget.Space
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="4dp" />
 
