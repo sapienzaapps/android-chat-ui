@@ -11,12 +11,16 @@
               tools:context="co.intentservice.chatui.sample.MainActivity">
 
     <co.intentservice.chatui.ChatView
-            android:id="@+id/chat_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            chatview:bubbleElevation="elevated"
-            chatview:backgroundRcv="@android:color/transparent"
-            chatview:backgroundSend="@android:color/transparent"
-            chatview:inputHint="@string/start_typing"/>
+        android:id="@+id/chat_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        chatview:bubbleElevation="elevated"
+        chatview:backgroundRcv="@android:color/transparent"
+        chatview:backgroundSend="@android:color/transparent"
+
+        chatview:bubbleBackgroundRcv="@color/white"
+        chatview:bubbleBackgroundSend="@color/blue"
+
+        chatview:inputHint="@string/start_typing"/>
 
 </LinearLayout>
