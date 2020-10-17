@@ -15,7 +15,7 @@
         android:id="@+id/bubble"
         app:cardCornerRadius="8dp"
         app:cardElevation="4dp"
-        app:cardBackgroundColor="@color/default_bubble_color_send"
+        app:cardBackgroundColor="@color/u_blue_light"
         app:cardUseCompatPadding="true"
         android:layout_gravity="end"
         android:layout_width="wrap_content"
@@ -82,7 +82,7 @@
                     android:layout_gravity="end"
                     android:gravity="center_vertical|end"
                     android:layout_marginEnd="4dp"
-                    android:textColor="@color/default_tstamp_color_send"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/default_timestamp_text_size"
                     tools:text="12:10 am" />
 

@@ -315,20 +315,7 @@ public class ChatView extends RelativeLayout {
             }
         });
 
-        ImageView locationButton = findViewById(R.id.location_button);
-        locationButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (onLocationSendListener != null) {
-                    onLocationSendListener.sendLocation(new OnLocationAcquiredListener() {
-                        @Override
-                        public void doSend(Uri uri) {
-                            sendPositionMessage(onLocationMessageAddedInChatListener, System.currentTimeMillis(), uri);
-                        }
-                    });
-                }
-            }
-        });
+
     }
 
     private void setUserTypingListener() {
