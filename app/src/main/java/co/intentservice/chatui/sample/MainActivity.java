@@ -8,6 +8,7 @@ import android.util.Log;
 
 import co.intentservice.chatui.ChatView;
 import co.intentservice.chatui.models.ChatMessage;
+import co.intentservice.chatui.models.InfoMessage;
 import co.intentservice.chatui.models.PositionMessage;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         
 
         final ChatView chatView = (ChatView) findViewById(R.id.chat_view);
+        chatView.addMessage(new InfoMessage("Info message from server",System.currentTimeMillis()));
         chatView.addMessage(new ChatMessage("Message received", System.currentTimeMillis(), ChatMessage.Type.RECEIVED));
         chatView.addMessage(new ChatMessage("A message with a sender name",
                 System.currentTimeMillis(), ChatMessage.Type.RECEIVED, "Ryan Java"));
@@ -30,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
         lon = 12.9282263;
         chatView.addMessage(new PositionMessage(System.currentTimeMillis(),ChatMessage.Type.POSITION_RECEIVED, Uri.parse("geo:0,0?q="+lat+","+lon+"(User+Name)")));
         //chatView.addMessage(new ChatMessage("Message sent", System.currentTimeMillis(), ChatMessage.Type.SENT));
+
+        chatView.addMessage(new InfoMessage("Second longer message from server bla bla very long", System.currentTimeMillis()));
+
         chatView.setOnSentMessageListener(new ChatView.OnSentMessageListener() {
             @Override
             public boolean sendMessage(ChatMessage chatMessage) {
@@ -79,7 +84,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 test2.setMessageSent(chatView);
+                chatView.addMessage(new ChatMessage("Message received", System.currentTimeMillis(), ChatMessage.Type.RECEIVED));
             }
         },4000);
+
+        Handler h2 = new Handler();
+        h2.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                chatView.addMessage(new ChatMessage("Message received", System.currentTimeMillis(), ChatMessage.Type.RECEIVED, "John"));
+            }
+        }, 5000);
     }
 }

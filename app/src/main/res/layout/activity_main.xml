@@ -17,9 +17,11 @@
         chatview:bubbleElevation="elevated"
         chatview:backgroundRcv="@android:color/transparent"
         chatview:backgroundSend="@android:color/transparent"
-
+        chatview:backgroundInfo="@android:color/transparent"
         chatview:bubbleBackgroundRcv="@color/white"
         chatview:bubbleBackgroundSend="@color/blue"
+        chatview:bubbleBackgroundInfo="@color/dark_gray"
+        chatview:backgroundColor="@color/off_white"
 
         chatview:inputHint="@string/start_typing"/>
 

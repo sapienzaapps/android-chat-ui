@@ -26,4 +26,11 @@ public interface ViewBuilderInterface {
      */
     MessageView buildSentView(Context context, MessageView.MessageType type);
 
+    /**
+     * Returns a MessageView object which is used to display info messages.
+     * @param context A context that is used to instantiate the view.
+     * @return        MessageView object for displaying sent messages.
+     */
+    MessageView buildInfoView(Context context);
+
 }

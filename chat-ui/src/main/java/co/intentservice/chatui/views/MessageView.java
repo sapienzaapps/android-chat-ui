@@ -90,7 +90,7 @@ public abstract class MessageView extends FrameLayout {
     }
 
     public enum MessageType {
-        TEXT_MESSAGE, POSITION_MESSAGE
+        TEXT_MESSAGE, POSITION_MESSAGE, INFO_MESSAGE
     }
 
 }

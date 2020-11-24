@@ -31,9 +31,10 @@ public class ChatViewListAdapter extends BaseAdapter {
     public final int TEXT_RECEIVED = 1;
     public final int POSITION_SENT = 2;
     public final int POSITION_RECEIVED = 3;
+    public final int INFO = 4;
 
-    private int backgroundRcv, backgroundSend;
-    private int bubbleBackgroundRcv, bubbleBackgroundSend;
+    private int backgroundRcv, backgroundSend, backgroundInfo;
+    private int bubbleBackgroundRcv, bubbleBackgroundSend, bubbleBackgroundInfo;
     private float bubbleElevation;
     private ViewBuilderInterface viewBuilder = new ViewBuilder();
 
@@ -42,14 +43,16 @@ public class ChatViewListAdapter extends BaseAdapter {
     Context context;
     LayoutInflater inflater;
 
-    public ChatViewListAdapter(Context context, ViewBuilderInterface viewBuilder, int backgroundRcv, int backgroundSend, int bubbleBackgroundRcv, int bubbleBackgroundSend, float bubbleElevation) {
+    public ChatViewListAdapter(Context context, ViewBuilderInterface viewBuilder, int backgroundRcv, int backgroundSend, int backgroundInfo, int bubbleBackgroundRcv, int bubbleBackgroundSend, int bubbleBackgroundInfo, float bubbleElevation) {
         this.chatMessages = new ArrayList<>();
         this.context = context;
         this.inflater = LayoutInflater.from(context);
         this.backgroundRcv = backgroundRcv;
         this.backgroundSend = backgroundSend;
+        this.backgroundInfo = backgroundInfo;
         this.bubbleBackgroundRcv = bubbleBackgroundRcv;
         this.bubbleBackgroundSend = bubbleBackgroundSend;
+        this.bubbleBackgroundInfo = bubbleBackgroundInfo;
         this.bubbleElevation = bubbleElevation;
         this.viewBuilder = viewBuilder;
     }
@@ -76,7 +79,7 @@ public class ChatViewListAdapter extends BaseAdapter {
 
     @Override
     public int getViewTypeCount() {
-        return 4;
+        return 5;
     }
 
     @Override
@@ -117,9 +120,12 @@ public class ChatViewListAdapter extends BaseAdapter {
                         }
                     });
                     break;
+                case INFO:
+                    convertView = viewBuilder.buildInfoView(context);
+                    break;
             }
 
-            holder = new MessageViewHolder(convertView, backgroundRcv, backgroundSend, bubbleBackgroundRcv, bubbleBackgroundSend);
+            holder = new MessageViewHolder(convertView, backgroundRcv, backgroundSend, backgroundInfo, bubbleBackgroundRcv, bubbleBackgroundSend, bubbleBackgroundInfo);
             convertView.setTag(holder);
         } else {
             holder = (MessageViewHolder) convertView.getTag();

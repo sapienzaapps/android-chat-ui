@@ -37,4 +37,10 @@ public class ViewBuilder implements ViewBuilderInterface {
 
     }
 
+    @Override
+    public MessageView buildInfoView(Context context) {
+        MessageView view = new ItemInfoView(context);
+        return view;
+    }
+
 }

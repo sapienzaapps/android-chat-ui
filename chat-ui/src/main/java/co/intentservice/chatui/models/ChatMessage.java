@@ -97,6 +97,6 @@ public class ChatMessage implements Serializable {
     }
 
     public enum Type implements Serializable {
-        SENT, RECEIVED, POSITION_SENT, POSITION_RECEIVED
+        SENT, RECEIVED, POSITION_SENT, POSITION_RECEIVED, INFO
     }
 }

@@ -17,9 +17,12 @@
 
         <attr name="backgroundRcv" format="color" />
         <attr name="backgroundSend" format="color" />
+        <attr name="backgroundInfo" format="color" />
 
         <attr name="bubbleBackgroundRcv" format="color" />
         <attr name="bubbleBackgroundSend" format="color" />
+        <attr name="bubbleBackgroundInfo" format="color" />
+
         <attr name="bubbleElevation">
             <enum name="flat" value="0" />
             <enum name="elevated" value="1" />

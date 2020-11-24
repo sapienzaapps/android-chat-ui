@@ -21,22 +21,25 @@ public class MessageViewHolder {
     public final int STATUS_RECEIVED = 1;
     public final int POSITION_SENT = 2;
     public final int POSITION_RECEIVED = 3;
+    public final int INFO = 4;
 
     View row;
     Context context;
 
     private MessageView messageView;
-    private int backgroundRcv, backgroundSend;
-    private int bubbleBackgroundRcv, bubbleBackgroundSend;
+    private int backgroundRcv, backgroundSend, backgroundInfo;
+    private int bubbleBackgroundRcv, bubbleBackgroundSend, bubbleBackgroundInfo;
 
-    public MessageViewHolder(View convertView, int backgroundRcv, int backgroundSend, int bubbleBackgroundRcv, int bubbleBackgroundSend) {
+    public MessageViewHolder(View convertView, int backgroundRcv, int backgroundSend, int backgroundInfo, int bubbleBackgroundRcv, int bubbleBackgroundSend, int bubbleBackgroundInfo) {
         row = convertView;
         context = row.getContext();
         messageView = (MessageView) convertView;
         this.backgroundRcv = backgroundRcv;
         this.backgroundSend = backgroundSend;
+        this.backgroundInfo = backgroundInfo;
         this.bubbleBackgroundSend = bubbleBackgroundSend;
         this.bubbleBackgroundRcv = bubbleBackgroundRcv;
+        this.bubbleBackgroundInfo = bubbleBackgroundInfo;
     }
 
     public void setMessageAsSent() {
@@ -85,6 +88,9 @@ public class MessageViewHolder {
                 chatMessageBackground = backgroundSend;
                 bubbleBackground = bubbleBackgroundSend;
                 break;
+            case INFO:
+                chatMessageBackground = backgroundInfo;
+                bubbleBackground = bubbleBackgroundInfo;
         }
 
         messageView.setBackgroundColor(chatMessageBackground);

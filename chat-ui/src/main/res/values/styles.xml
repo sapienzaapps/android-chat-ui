@@ -20,10 +20,12 @@
 
         <item name="backgroundRcv">@color/default_chat_message_background_color_rcv</item>
         <item name="backgroundSend">@color/default_chat_message_background_color_send</item>
+        <item name="backgroundInfo">@color/default_chat_message_background_color_send</item>
 
         <item name="bubbleElevation">elevated</item>
         <item name="bubbleBackgroundRcv">@color/default_bubble_color_rcv</item>
         <item name="bubbleBackgroundSend">@color/default_bubble_color_send</item>
+        <item name="bubbleBackgroundInfo">@color/dark_gray</item>
 
         <!--item name="messageTextAppearance"></item-->
         <item name="messageTextColorSend">@color/default_message_color_send</item>

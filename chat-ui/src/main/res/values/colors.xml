@@ -19,9 +19,11 @@
 
     <color name="default_chat_message_background_color_rcv">@color/white</color>
     <color name="default_chat_message_background_color_send">@color/white</color>
+    <color name="default_chat_message_background_color_info">@color/white</color>
 
     <color name="default_bubble_color_rcv">@color/white</color>
     <color name="default_bubble_color_send">@color/white</color>
+    <color name="default_bubble_color_info">@color/dark_gray</color>
 
     <color name="default_tstamp_color_rcv">@color/off_white</color>
     <color name="default_tstamp_color_send">@color/main_color_gray</color>

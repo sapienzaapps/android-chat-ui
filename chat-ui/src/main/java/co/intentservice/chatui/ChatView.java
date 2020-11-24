@@ -71,8 +71,8 @@ public class ChatView extends RelativeLayout {
 
     private float bubbleElevation;
 
-    private int backgroundRcv, backgroundSend;
-    private int bubbleBackgroundRcv, bubbleBackgroundSend; // Drawables cause cardRadius issues. Better to use background color
+    private int backgroundRcv, backgroundSend, backgroundInfo;
+    private int bubbleBackgroundRcv, bubbleBackgroundSend, bubbleBackgroundInfo; // Drawables cause cardRadius issues. Better to use background color
     private Drawable sendButtonIcon, buttonDrawable;
     private TypedArray attributes, textAppearanceAttributes;
     private Context context;
@@ -129,7 +129,7 @@ public class ChatView extends RelativeLayout {
     }
 
     private void setListAdapter() {
-        chatViewListAdapter = new ChatViewListAdapter(context, new ViewBuilder(), backgroundRcv, backgroundSend, bubbleBackgroundRcv,bubbleBackgroundSend,bubbleElevation);
+        chatViewListAdapter = new ChatViewListAdapter(context, new ViewBuilder(), backgroundRcv, backgroundSend, backgroundInfo, bubbleBackgroundRcv, bubbleBackgroundSend, bubbleBackgroundInfo, bubbleElevation);
         chatListView.setAdapter(chatViewListAdapter);
     }
 
@@ -148,6 +148,7 @@ public class ChatView extends RelativeLayout {
     private void getAttributesForChatMessageRow() {
         backgroundRcv = attributes.getColor(R.styleable.ChatView_backgroundRcv, ContextCompat.getColor(context, R.color.default_chat_message_background_color_rcv));
         backgroundSend = attributes.getColor(R.styleable.ChatView_backgroundSend, ContextCompat.getColor(context, R.color.default_chat_message_background_color_send));
+        backgroundInfo = attributes.getColor(R.styleable.ChatView_backgroundInfo, ContextCompat.getColor(context, R.color.default_chat_message_background_color_info));
     }
 
     private void getAttributesForBubbles() {
@@ -157,6 +158,7 @@ public class ChatView extends RelativeLayout {
 
         bubbleBackgroundRcv = attributes.getColor(R.styleable.ChatView_bubbleBackgroundRcv, ContextCompat.getColor(context, R.color.default_bubble_color_rcv));
         bubbleBackgroundSend = attributes.getColor(R.styleable.ChatView_bubbleBackgroundSend, ContextCompat.getColor(context, R.color.default_bubble_color_send));
+        bubbleBackgroundInfo = attributes.getColor(R.styleable.ChatView_bubbleBackgroundInfo, ContextCompat.getColor(context, R.color.default_bubble_color_info));
     }
 
 
@@ -306,6 +308,7 @@ public class ChatView extends RelativeLayout {
             }
         });
 
+        /*
         actionsMenu.getSendButton().setOnLongClickListener(new OnLongClickListener() {
 
             @Override
@@ -314,6 +317,8 @@ public class ChatView extends RelativeLayout {
                 return true;
             }
         });
+
+         */
 
 
     }
