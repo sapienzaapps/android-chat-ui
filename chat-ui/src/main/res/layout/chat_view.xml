@@ -17,10 +17,11 @@
             android:layout_above="@+id/input_frame"
             android:clipToPadding="false"
             android:divider="@android:color/transparent"
-            android:paddingBottom="32dp"
+            android:paddingBottom="8dp"
             android:paddingTop="8dp"
             android:stackFromBottom="true"
-            android:transcriptMode="alwaysScroll" />
+            android:transcriptMode="alwaysScroll"
+            android:listSelector="@android:color/transparent" />
 
         <co.intentservice.chatui.fab.FloatingActionsMenu
             android:id="@+id/sendButton"
